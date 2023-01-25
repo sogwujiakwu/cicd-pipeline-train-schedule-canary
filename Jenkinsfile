@@ -8,7 +8,7 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'gradle:4.6-alpine'
+                    image 'gradle:4.6-jre7-alpine'
                     // Run the container on the node specified at the
                     // top-level of the Pipeline, in the same workspace,
                     // rather than on a new node entirely:
