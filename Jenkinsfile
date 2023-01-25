@@ -6,6 +6,16 @@ pipeline {
     }
     stages {
         stage('Build') {
+            agent {
+                docker {
+                    image 'gradle:4.6-jdk7-alpine'
+                    // Run the container on the node specified at the
+                    // top-level of the Pipeline, in the same workspace,
+                    // rather than on a new node entirely:
+                    reuseNode true
+                    args '--entrypoint='
+               } 
+            }                 
             steps {
                 echo 'Running build automation'
                 sh './gradlew build --no-daemon'
